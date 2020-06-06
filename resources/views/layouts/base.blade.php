@@ -19,7 +19,33 @@
 	<div class="header"><div class="section-inner">
 		<h1>Example Header</h1>
 	</div></div><!--/header-->
-	
+	<div>@if(!Auth::user())
+                        <li><a href="{{ route('login') }}">Login</a></li>
+                        <li><a href="{{ route('register') }}">Register</a></li>
+                    @else
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                               aria-expanded="false" aria-haspopup="true">
+                                {{ Auth::user()->name }} <span class="caret"></span>
+                            </a>
+
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a href="{{ route('logout') }}"
+                                       onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                        Logout
+                                    </a>
+
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                                          style="display: none;">
+                                        {{ csrf_field() }}
+                                    </form>
+                                </li>
+                            </ul>
+                        </li>
+                    @endif
+</div>
 	<!-- nav -->
 	<div class="nav"><div class="section-inner">
 		<ul class="clearfix">
@@ -41,11 +67,8 @@
 		<div class="thirds clearfix">
 			
 			<!-- one-third -->
-			<div class="one-third mobile-collapse">
-				<img src="images/1.jpg" alt="A bird on a fence" />
-				<h2>Section One</h2>
-				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-			</div><!--/one-third-->
+			@yield('content')
+		
 			
 			<!-- one-third -->
 			<div class="one-third one-third-second mobile-collapse">
@@ -112,6 +135,10 @@
 		<p>Footer text placed here.</p>
 		
 	</div></div><!--/footer-->
+
+	
+	
+	
 	
 </body>
 </html>
