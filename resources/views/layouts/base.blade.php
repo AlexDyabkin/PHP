@@ -9,9 +9,10 @@
 	<meta name="viewport" content="width=device-width">
 	
 	<!-- css -->
-	<link rel="stylesheet" href="public\css\main.css">
+	<link type="text/css" href="{{asset('/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
+ 	<link rel="stylesheet" href="public\css\main.css">
 	<link rel="stylesheet" href="public\css\responsive.css" media="screen and (max-width: 900px)">
-	
+	@stack('styles')
 </head>
 <body>
 
@@ -68,7 +69,11 @@
 			
 			<!-- one-third -->
 			@yield('content')
-		
+		<div class="one-third mobile-collapse">
+				<img src="images/1.jpg" alt="A bird on a fence" />
+				<h2>Section One</h2>
+				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+			</div><!--/one-third-->
 			
 			<!-- one-third -->
 			<div class="one-third one-third-second mobile-collapse">
@@ -139,6 +144,6 @@
 	
 	
 	
-	
+@stack('scripts')	
 </body>
 </html>
